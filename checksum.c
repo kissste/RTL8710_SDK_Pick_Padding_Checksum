@@ -29,9 +29,7 @@ int main(int argc, const char *argv[], const char *envp[])
       size = lseek(file, 0, 2);
       lseek(file, 0, 0);
       printf("size = %d \n\r", size);
-      sizeOfBuffer = 16 * ((size + 115) / 0x10);
-      buffer = alloca(sizeOfBuffer);
-      memset(&buffer, 0, size + 100);
+      buffer = malloc(size);
       read(file, buffer, size);
       for ( i = 0; i < (signed int)size; ++i )
         checksum += *((char *)buffer + i);
