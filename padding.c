@@ -60,6 +60,6 @@ int main(int argc, const char *argv[], const char *envp[])
 	  }
   } else {
 	  printf("Usage: padding.exe <size> <character> <file_name>\n");
-	  result -1;
+	  return -1;
   }
 }
