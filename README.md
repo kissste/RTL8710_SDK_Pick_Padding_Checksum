@@ -8,13 +8,13 @@ In addition to pick, padding and checksum, I included SetMac writtern by shariko
 
 This tool amends IP Address in the calibration sector.
 
-Example:
-rtl8710-openocd: make dump
-make cutoutcalib
-./setmac -i calib.bin -o calib2.bin -m 12:34:56+0
-make restorecalib
+Example:  
+rtl8710-openocd: make dump  
+make cutoutcalib  
+./setmac -i calib.bin -o calib2.bin -m 12:34:56+0  
+make restorecalib  
 
-Add to the makefile"
+Add to the makefile:  
 restorecalib:
         openocd -f interface/jlink.cfg -c "transport select swd" -f script/rtl8710.ocd -c "init" -c "reset halt" -c "rtl8710_flash_auto_erase 1" \
         -c "rtl8710_flash_auto_verify 1" -c "rtl8710_flash_write calib.bin 40960" -c shutdown
